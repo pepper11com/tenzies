@@ -137,6 +137,14 @@ export default function App() {
     } , [tenzies])
 
 
+    function resetLocalStorage() {
+        localStorage.removeItem("tenzies");
+        localStorage.removeItem("seconds");
+        setLowest(null);
+        setLowestTime(null);
+    }
+
+
     return (
         <main className={"d-flex mx-auto"}>
             {tenzies && <ReactConfetti />}
@@ -153,6 +161,8 @@ export default function App() {
                 <button className="roll-dice me-2" onClick={!isActive ? toggle : reset}>{isActive ? 'Reset' : 'Start'}</button>
                 <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
             </div>
+
+            <button className="reset-roll-dice" onClick={resetLocalStorage}>Hard Reset</button>
 
             <div className="d-flex mt-3 ">
                 <p className="me-2">Lowest Rolls: {lowest}</p>
